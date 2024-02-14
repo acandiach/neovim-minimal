@@ -1,25 +1,31 @@
 local map = vim.keymap.set
 
+-- Basic Configuration
 map("i", "jk", "<Esc><Esc>")
 map("n", "<leader>q", "<cmd>q<cr>")
 map("n", "<leader>w", "<cmd>w<cr>")
 map("n", "<leader>rr", "<cmd>source %<cr>")
+
+-- File Browser
 map("n", "<leader>e", "<cmd>Explore<cr>")
+
+-- To Navigate between buffer and close buffer
 map("n", "<leader>bn", "<cmd>bn<cr>")
 map("n", "<leader>bp", "<cmd>bp<cr>")
 map("n", "<leader>bd", "<cmd>bd<cr>")
 
+-- mantiene el texto resaltado en el centro del editor
 map('n', 'n', 'nzzzv', { desc = "Goes to the next result on the seach and put the cursor in the middle"})
 map('n', 'N', 'Nzzzv', { desc = "Goes to the prev result on the seach and put the cursor in the middle"})
 
 -- Move text up and down normal mode
--- map("n", "<A-j>", "<Esc>:m .+1<CR>==")
--- map("n", "<A-k>", "<Esc>:m .-2<CR>==")
+map("n", "<A-j>", "<Esc>:m .+1<CR>==")
+map("n", "<A-k>", "<Esc>:m .-2<CR>==")
 
 -- Move text up and down visual mode
--- map("v", "p", '"_dP')
--- map("v", "<A-j>", ":m .+1<CR>==")
--- map("v", "<A-k>", ":m .-2<CR>==")
+map("v", "p", '"_dP')
+map("v", "<A-j>", ":m .+1<CR>==")
+map("v", "<A-k>", ":m .-2<CR>==")
 
 --Move text up and down visula mode but Indenting
 map("v", "J", ":m '>+1<CR>gv=gv")
@@ -49,19 +55,9 @@ map('v', '<', '<gv', { desc = "after tab out re-select the same"})
 map('n', 'n', 'nzzzv', { desc = "Goes to the next result on the seach and put the cursor in the middle"})
 map('n', 'N', 'Nzzzv', { desc = "Goes to the prev result on the seach and put the cursor in the middle"})
 
-
--- Desactivate or Activate Transparenting
--- map("n", "<leader>ty", ":TransparentToggle<CR>")
-
 -- Faster Scrolling
 map("n", "<leader>j", "10j")
 map("n", "<leader>k", "10k")
-
--- Move With Tmux-navigator
--- map("n", "<C-h>", ":TmuxNavigateLeft<CR>")
--- map("n", "<C-j>", ":TmuxNavigateDown<CR>")
--- map("n", "<C-k>", ":TmuxNavigateUp<CR>")
--- map("n", "<C-l>", ":TmuxNavigateRight<CR>")
 
 -- For multicursor
 
@@ -74,6 +70,13 @@ map("n", "<leader>k", "10k")
 --press [/] to select next/previous cursor
 --press q to skip current and get next occurrence
 --press Q to remove current cursor/selection
+
+vim.cmd([[
+    let g:VM_maps = {}
+    let g:VM_maps['Find Under']         = '<C-s>'  " replace C-s
+    let g:VM_maps['Find Subword Under'] = '<C-s>'  " replace visual C-s
+    let g:VM_mouse_mappings = 1
+]])
 
 -- ReplaceWithRegister:
 -- uso yw para copiar la palabra y luego me posiciono en la siguiente palabra
